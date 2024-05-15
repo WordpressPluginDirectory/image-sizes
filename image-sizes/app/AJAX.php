@@ -67,10 +67,18 @@ class Ajax extends Base {
 
 		$add_1_month 	= wp_date('U') + MONTH_IN_SECONDS ;
 		update_option( 'thumbpress_pro_notice_recurring_every_1_month', $add_1_month );
+		// update_option('thumbpress_pro_notice_1_time', true);
 
 		$response['status'] 	= 1;
 		$response['message'] 	= __( 'Pointer Removed', 'image-sizes' );
 		wp_send_json( $response );
 
+	}
+
+	public function image_sizes_dismiss(){		
+
+		if ( 'cx-setup-notice' ==  $_POST['meta_key'] ) {
+			update_option( "{$this->slug}_dismiss", 1 );
+		}
 	}
 }
