@@ -95,11 +95,10 @@ class Regenerate_Thumbnails extends Base {
 			// remove old thumbnails first
 			$old_metadata 	= wp_get_attachment_metadata( $image_id );
 			$thumb_dir 		= dirname( $main_img ) . DIRECTORY_SEPARATOR;
-			
-			
+
 			foreach ( $old_metadata['sizes'] as $old_size => $old_size_data ) {
 				// For SVG file
-				if ('image/svg+xml' == $old_size_data['mime-type']) {
+				if ( 'image/svg+xml' == $old_size_data['mime-type'] ) {
 					continue;
 				}
 				
